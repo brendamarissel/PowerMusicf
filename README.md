@@ -6,7 +6,7 @@ user.23@gmail.com
 
 contraseña : song123
 
-*usuario preemium:
+*usuario premium:
 
 brenda.marissel@gmail.com
 
