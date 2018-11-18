@@ -1,0 +1,324 @@
+<html>
+<head>
+  <title>PowerMusic</title>
+  <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+ 
+   <meta name="description" content="descripciones">
+    <meta name="keywords" content="valores">
+    <meta name="author" content="">
+    <meta name="theme-color" content="#36393e">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/style.css">
+    <script src="https://unpkg.com/vue@2.0.0/dist/vue.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
+    <script src="https://unpkg.com/vuefire@1.3.0/dist/vuefire.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900italic,900" rel="stylesheet" type="text/css">
+    <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet prefetch" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet prefetch" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.3.0/nouislider.min.css">
+    <link rel="stylesheet" href="./static/css/style-mitzi.css"><!--[if lte IE 9]>
+    <link rel="stylesheet" href="./static/css/style-mitzi.css"><!--[if lte IE 9]>
+    <link rel="stylesheet" href="./static/css/style-mitzi.css"><!--[if lte IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body style="background-color:black;">
+
+	<div id="imagen" style="  width: 15%; height: 100vh;float:left;">
+	 <br>
+	 </br>
+	<div style="height:180px;width:250px; margin:10px;"> <img src="img/queen3.jpg" alt="music"> </div>
+		 <br>
+	 </br>
+	<div style="height:180px;width:250px; margin:10px;"> <img src="img/nirvana.jpg" alt="music"> </div>
+	
+		 <br>
+	 </br>
+	<div style="height:180px;width:250px; margin:10px;"> <img src="img/madona.jpg" alt="music"> </div>
+	
+	 <br>
+	 </br>
+	<div style="height:180px;width:250px; margin:10px;"> <img src="img/beatles.jpg" alt="music"> </div>
+	
+	</div>
+	
+	
+	<div id="imagen2" style="  width: 15%; height: 100vh;float:right;">
+	 <br>
+	 </br>
+	<div style="height:180px;width:250px; margin:10px;"> <img src="img/mja.jpg" alt="music"> </div>
+		 <br>
+	 </br>
+	<div style="height:180px;width:250px; margin:10px;"> <img src="img/rox.jpg" alt="music"> </div>
+	
+		 <br>
+	 </br>
+	<div style="height:180px;width:250px; margin:10px;"> <img src="img/no.jpg" alt="music"> </div>
+	
+	 <br>
+	 </br>
+	<div style="height:180px;width:250px; margin:10px;"> <img src="img/gunt.jpg" alt="music"> </div>
+	
+	</div>
+	
+		
+	
+	
+	
+	
+	
+	
+  <div id="login_div" class="main-div">
+  
+  <div style="height:180px;width:250px;"> <img src="img/logo1.png" alt="music"> </div>
+    
+	<h3 style="color:white;font-style:italic;">Inicie sesion</h3>
+    <input type="email" placeholder="Email..." id="email_field" />
+    <input type="password" placeholder="Password..." id="password_field" />
+
+    <button style="background:green " onclick="login()">Ingresar</button>
+  </div>
+
+
+  <div id="imagen3" style="height:100px;float:left;"> <br> </br><img src="img/logo1.png" alt="music">  </div>
+  
+<div id="user_div" style="background-color:black; height:200px;"  class="login-div">
+   <table>
+   <tr>
+   <td style="width:200px; "> </td>
+   <td> <h1> <p id="user_para" style="color:white;">Bienvenido usuario Preemium</p></h1> </td>
+   <td style="width:180px; "> </td>
+    <td> <button id ="boton" style="background:green;height:40px;width:80px;color:white;" onclick="logout()">Salir</button></td>
+	<tr>
+	<br>
+	<br>
+	<br>
+	<br>
+	
+	</table>
+  </div>
+ 
+
+	
+  
+  	<div id="app" style="background-color:black;">
+	
+	
+      <section class="header" style="background-color:#808080;">
+
+        <!--
+        <div class="window__actions">
+        <i class="ion-record red"></i>
+        <i class="ion-record yellow"></i>
+        <i class="ion-record green"></i>
+        </div>
+        -->
+
+		
+		
+		
+		
+        <div class="search">
+          <input type="text" placeholder="Search" v-on:keyup.13="searchVideo()" v-model="searchInput">
+        </div>
+      </section>
+	  
+	  
+      <section class="content" >
+        <div class="content__left" style="background-color:  black">
+          <section class="navigation" style="background-color:  black">
+            <!-- Main-->
+            <!-- /-->
+            <!-- Your Music-->
+            <div class="navigation__list" style="background-color:  black;">
+              <div role="button" data-toggle="collapse" href="#yourMusic" aria-expanded="true" aria-controls="yourMusic" class="navigation__list__header">Your Music</div>
+              <div id="yourMusic" class="collapse in"><a v-if="!showAddCat" v-on:click="insertCat()" class="navigation__list__item"><span>Añade una nueva categoria </span></a><a v-else class="navigation__list__item">
+                  <input id="input_for_category" type="text" v-on:keyup.13="addNewCategory($event)" placeholder="Insert a new category" autofocus></a></div>
+              <div id="yourMusic" class="collapse in"><a v-for="category in categories" v-on:click="showSong(category.id)" class="navigation__list__item"><i class="ion-headphone"></i><span>{{ category.name }}</span></a></div>
+            </div>
+            <!-- /-->
+            <!-- Playlists-->
+            <!-- /-->
+          </section>
+        
+	
+          
+		  
+		  <section  style="background-color:  black;">
+		  <a style="color:white;" href="#"> Novedades</a>
+														<div style="height: 100px; ">
+														
+														<ul class="pagination" style="height:100px;width:100px;">
+														<li class="active">
+															<h4 style="color:white;"> <center> BTS-idol </center> </h4>
+															<img src="img/bts.jpg" alt="music">
+														</li>
+														
+
+													
+
+													</ul>
+													</div>
+		  
+
+          </section>
+		  
+ 
+		  
+        </div>
+		
+        <div class="content__middle" style="background-color:#808080; ">
+          <div class="artist is-verified">
+            <div class="artist__content">
+              <div class="tab-content">
+                <!-- Overview-->
+                <div id="artist-overview" role="tabpanel" class="tab-pane active">
+                  <div class="overview">
+                    <div class="overview__artist">
+                      <!-- Latest Release-->
+                      <!-- /-->
+                      <!-- Popular-->
+                      <div class="section-title">Songs</div>
+                      <div v-if="searchingSong" class="tracks">
+                        <div v-for="(video,index) in videos" class="track"> 
+                          <div class="track__art"><img v-bind:src="video.snippet.thumbnails.medium.url"></div>
+                          <div class="track__number">{{ index + 1 }}</div>
+                          <div class="track__added"><i class="ion-checkmark-round added"></i></div>
+                          <div v-on:contextmenu="openMenu($event,video.id.videoId, video.snippet.title, video.snippet.thumbnails.medium.url)" v-on:click="sendVideo(video.id.videoId, video.snippet.title, video.snippet.thumbnails.medium.url)" class="track__title">{{ video.snippet.title }}</div>
+                        </div>
+                      </div>
+                      <div v-else class="tracks">
+                        <div v-for="(song,index) in songsForPlay" class="track"> 
+                          <div class="track__art"><img v-bind:src="song.image"></div>
+                          <div class="track__number">{{ index + 1 }}</div>
+                          <div class="track__added"><i class="ion-checkmark-round added"></i></div>
+                          <div v-on:click="playMusic(song.id, song.name, song.image)" class="track__title">{{ song.name }}</div>
+						  
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- /-->
+                <!-- Related Artists-->
+                
+                <!-- /-->
+                <!-- About // Coming Soon-->
+                <!-- <div role="tabpanel" class="tab-pane" id="artist-about">About</div>-->
+                <!-- /-->
+              </div>
+            </div>
+          </div>
+		  
+	
+		  
+
+		  
+		  
+		  
+		  
+        </div>
+		
+		
+		
+		
+		
+      </section>
+	  
+	  
+	  
+      <section style="display:block;" class="current-track">
+	  <section class="playing" >
+            <div class="playing__art"><img v-bind:src="currentImage" alt="Album Art"></div>
+            <div class="playing__song"><a class="playing__song__name">{{ currentVideo }}</a>
+            </div>
+            <div class="playing__add"><i class="ion-checkmark"></i></div>
+          </section>
+        <div id="track" style="width: 0px;height: 0px;"></div>
+        <div class="current-track__actions"><a  class="ion-ios-skipbackward " onclick="player.previousVideo()" ></a><a onclick ="player.playVideo()" class="ion-ios-play play" title="play"></a><a onclick="player.pauseVideo()" id="player_control_button" class="ion-ios-pause pause" title="pause"></a><a  class="ion-ios-skipforward" onclick="player.nextVideo()"></a></div>
+        <div class="current-track__progress">
+          <div class="current-track__progress__start" >0:00</div>
+          <div class="current-track__progress__bar">
+            <div id="progress" style="width:0%;"></div>
+			
+          </div>
+          <div class="current-track__progress__finish" >0:00</div>
+        </div>
+        <div class="current-track__options"><a href="#" class="lyrics">Lyrics</a><span class="controls"><a href="#" class="control"><i class="ion-navicon"></i></a><a href="#" class="control"><i class="ion-shuffle"></i></a><a href="#" class="control"><i class="fa fa-refresh"></i></a><a href="#" class="control devices"><i class="ion-iphone"></i><span>Devices Available</span></a><a href="#" onclick="player.unMute();" class="control volume"><i onclick="player.unMute();" class="ion-volume-high"></i> <a href="#" onclick="player.mute();" class="control volume"><i onclick="player.mute();" class="ion-volume-mute"></i>
+              <div id="song-volume"></div></a></span></div>
+      </section>
+	  
+	  
+      <nav id="primary_nav_wrap" v-if="viewMenu" tabindex="-1" v-bind:style="{top:top, left:left}" v-on:blur="closeMenu()">
+        <ul style="display:block !important;width: 170px" class="dropdown-menu-right">
+          <li style="position:relative;width: 100%;">Agregar
+            <ul>
+              <li v-for="category in categories" v-on:click="addOnCategory(category.id)">{{ category.name }}</li>
+			
+            </ul>
+          </li>
+
+          
+
+        </ul>
+      </nav>
+
+      <div class="right vertical-this">
+	<br>
+	<br>
+	<div class="right vertical-this">
+	<h6 style="color:white;background-color:black;height:50px;"> <center> Power Music copyright 2018.&nbsp;&nbsp;All rights reserved. </center> </h6>
+  </div>
+  </div>
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/vue.resource/1.2.0/vue-resource.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.3.0/nouislider.min.js"></script>
+      <script src="static/js/index.js"></script>
+    </div>
+  
+
+ 
+ 
+  
+  
+  
+  
+  
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+   <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyAfeDp7Nb4kQThQDBU3WJUyfK6x2SGTqQo",
+        authDomain: "powermusic-a0624.firebaseapp.com",
+        databaseURL: "https://powermusic-a0624.firebaseio.com",
+        projectId: "powermusic-a0624",
+        storageBucket: "powermusic-a0624.appspot.com",
+        messagingSenderId: "328544197766"
+      };
+      firebase.initializeApp(config);
+    </script>
+  <script src="index.js"></script>
+  <script>
+      // 2. This code loads the IFrame Player API code asynchronously.
+      var tag = document.createElement('script');
+      
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+      
+      // 3. This function creates an <iframe> (and YouTube player)
+      //    after the API code downloads.
+      
+    </script>
+    <script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
+
+</body>
+</html>
